@@ -9,5 +9,13 @@
   "scripts": {
     "start": "node server.js",
     "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.9"
   }
 }
+
