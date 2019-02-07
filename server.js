@@ -5,8 +5,8 @@ const express = require('express')
 
 // configure the PORT which the app will use to 
 // listen for incoming traffic
+const HOST = process.env.HOST || 'localhost'
 const PORT = process.env.PORT || 5000
-
 
 // instantiate the express application
 // the app object is used to configure the
@@ -29,6 +29,6 @@ app.get('/',
 // set up server listening
 //-------------------------
 app.listen( PORT, 
-            () => console.log(`Listening on http://localhost:${PORT}`) 
+            () => console.log(`Listening on http://${HOST}:${PORT}`) 
 )
 
