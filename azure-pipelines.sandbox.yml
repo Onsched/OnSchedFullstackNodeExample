@@ -1,0 +1,34 @@
+# Build and test sandbox Docker image for this app using Azure Pipelines
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker?view=vsts
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+variables:
+  imageName:        'onsched_fullstack_node_ex'
+  imageSandbox:     '$(imageName):sandbox'
+  imageSboxRelease: '$(imageName):sandbox$(Build.BuildId)'
+  # define two more variables dockerId and dockerPassword in the build pipeline in UI
+
+steps:
+- script: |
+    yarn install
+    yarn test
+    docker build -f Dockerfile --tag $(dockerId).azurecr.io/$(imageSandbox) --tag $(dockerId).azurecr.io/$(imageSboxRelease) .
+    docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
+    docker push $(dockerId).azurecr.io/$(imageSandbox)
+    docker push $(dockerId).azurecr.io/$(imageSboxRelease)
+  env:
+    pswd: $(dockerPassword)
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFiles: '**/TEST_RESULTS.xml'
+    testRunTitle:     'Test results for OnSchedFullStackNodeExample'
+
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool:    Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+    reportDirectory:     '$(System.DefaultWorkingDirectory)/**/coverage'
+
