@@ -1,0 +1,18 @@
+# Docker Compose setup for working in development
+version: '3'
+services:
+  web:
+    build: .
+    image: onsched_fs_node_ex:latest
+    # make sure development code changes are 
+    # picked up by the container with the 
+    # command and volumes options 
+    command: yarn run dev
+    volumes:
+      - .:/app
+    environment:
+      PORT: 5000
+      NODE_ENV: development
+    ports:
+      - "5000:5000"
+
