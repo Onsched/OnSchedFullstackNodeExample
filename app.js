@@ -9,8 +9,9 @@ const morgan  = require('morgan')
 //----------------------
 // Configuration
 //----------------------
-// if NODE_ENV is undefined, this is development
-const isDevelopment = !(process.env.NODE_ENV)
+// if NODE_ENV is undefined or development, this is development
+const isDevelopment = !(process.env.NODE_ENV) || 
+                      process.env.NODE_ENV === 'development'
 
 
 // instantiate the express application
@@ -39,7 +40,8 @@ if ( isDevelopment ) {
 //-------------------------
 app.get('/', 
   (request, response) => {
-    response.send( { hi: 'there' } )
+    response.send( { NODE_ENV: process.env.NODE_ENV, 
+                     hi: "there" } )
   }
 )
 
