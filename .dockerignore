@@ -1,3 +1,7 @@
+# ignore project specific files
+dev.js
+
+
 # unnecessary source files
 node_modules
 .git
