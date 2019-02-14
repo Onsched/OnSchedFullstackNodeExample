@@ -11,7 +11,7 @@ describe( 'Test base routes', () => {
       const response = await request( app ).get( '/' )
 
       expect( response.statusCode ).toEqual( 200  )
-      expect( response.body       ).toEqual( { hi: "there" } )
+      expect( response.text       ).toEqual( "Welcome to OnSched" )
 
     })
 
