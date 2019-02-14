@@ -5,15 +5,12 @@
 const express = require('express')
 const morgan  = require('morgan')
 
+const keys       = require('./config/keys')
+const authRoutes = require('./routes/auth')
 
 //----------------------
 // Configuration
 //----------------------
-// if NODE_ENV is undefined or development, this is development
-const isDevelopment = !(process.env.NODE_ENV) || 
-                      process.env.NODE_ENV === 'development'
-
-
 // instantiate the express application
 // the app object is used to configure the
 // server, listen to incoming request, and
@@ -29,8 +26,8 @@ const app = express()
 // incoming requests to the app BEFORE they are sent to
 // the route handlers
 
-// if isDevelopment, add console output
-if ( isDevelopment ) {
+// if keys.isDevelopment is set, add console output
+if ( keys.isDevelopment ) {
   app.use( morgan('dev') )
 }
 
@@ -38,10 +35,14 @@ if ( isDevelopment ) {
 //-------------------------
 // Route Handlers
 //-------------------------
-app.get('/', 
+app.use( '/auth', authRoutes )
+
+
+// home routes
+app.get( '/', 
   (request, response) => {
-    response.send( { NODE_ENV: process.env.NODE_ENV, 
-                     hi: "there" } )
+    response.send( 'Welcome to OnSched' )
+
   }
 )
 
