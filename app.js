@@ -2,8 +2,10 @@
 // Configuration of the app has been separated
 // from the actual server initialization
 // (server.js) to support testing
-const express = require('express')
-const morgan  = require('morgan')
+const express   = require('express')
+const morgan    = require('morgan')
+const rateLimit = require('express-rate-limit')
+const slowDown  = require('express-slow-down')
 
 const keys          = require('./config/keys')
 const authRoutes    = require('./routes/auth')
@@ -32,6 +34,30 @@ const app = express()
 if ( keys.isDevelopment ) {
   app.use( morgan('dev') )
 }
+
+
+// speed limiter configuration
+const speedLimiter = slowDown(
+  {
+    windowMs:   30 * 60 * 1000, // 30 minutes
+    delayAfter: 20,             // allow 20 requests to go at full-speed, then...
+    delayMs:    500             // 6th request has a 500ms delay,
+                                // 7th has a 1000ms delay, 8th gets 1500ms, etc.
+  }
+)
+
+// rate limiting configuration
+const rateLimiter = rateLimit(
+  {
+    windowMs: 60 * 1000, // 1 minute
+    max:      10,        // max requests during the time period
+    message:  'Too many requests from this IP.  Try again later!'
+  }
+)
+
+// add rate/speed limiting to the OnSched API endpoints
+app.use( '/api/onsched', speedLimiter )
+app.use( '/api/onsched', rateLimiter )
 
 
 //-------------------------
