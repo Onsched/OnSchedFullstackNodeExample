@@ -16,9 +16,9 @@ const router = express.Router()
 router.get( '/initialize', 
   (request, response, next) => {
     const params = {
-      scope:    'OnSchedApi',
-      grant_type: 'client_credentials',
-      client_id:  keys.onschedClientID,
+      scope:         'OnSchedApi',
+      grant_type:    'client_credentials',
+      client_id:     keys.onschedClientID,
       client_secret: keys.onschedClientSecret
     }
 
@@ -38,7 +38,7 @@ router.get( '/initialize',
 
   }
 
-)
+) //-- end GET /auth/initialize
 
 
 //-------------------------------------------
@@ -51,4 +51,3 @@ router.use( errorResponses )
 
 // export the router
 module.exports = router
-

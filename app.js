@@ -5,8 +5,10 @@
 const express = require('express')
 const morgan  = require('morgan')
 
-const keys       = require('./config/keys')
-const authRoutes = require('./routes/auth')
+const keys          = require('./config/keys')
+const authRoutes    = require('./routes/auth')
+const onschedRoutes = require('./routes/onsched')
+
 
 //----------------------
 // Configuration
@@ -35,7 +37,8 @@ if ( keys.isDevelopment ) {
 //-------------------------
 // Route Handlers
 //-------------------------
-app.use( '/auth', authRoutes )
+app.use( '/auth',        authRoutes )
+app.use( '/api/onsched', onschedRoutes )
 
 
 // home routes
