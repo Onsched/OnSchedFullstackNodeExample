@@ -3,7 +3,7 @@ FROM node:dubnium-alpine
 
 # ENV variables are available during runtime
 # and build time processing
-ENV PORT 5000
+#ENV PORT 5000
 ENV NODE_ENV production
 
 
@@ -19,7 +19,7 @@ RUN yarn install
 
 
 # Expose ports for accessing the app
-EXPOSE ${PORT} 80
+EXPOSE 5000 80
 
 
 # Launch the Express server
