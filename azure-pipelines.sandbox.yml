@@ -12,7 +12,7 @@ variables:
 steps:
 - script: |
     yarn install
-    yarn test
+    yarn test:ci
     docker build -f Dockerfile --tag $(dockerId).azurecr.io/$(imageSandbox) --tag $(dockerId).azurecr.io/$(imageSboxRelease) .
     docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageSandbox)

@@ -12,7 +12,7 @@ variables:
 steps:
 - script: |
     yarn install
-    yarn test
+    yarn test:ci
     docker build -f Dockerfile --tag $(dockerId).azurecr.io/$(imageRelease) --tag $(dockerId).azurecr.io/$(imageLatest) .
     docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageRelease)
@@ -23,7 +23,7 @@ steps:
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
-    testResultsFiles: '**/TEST-RESULTS.xml'
+    testResultsFiles: '**/TEST_RESULTS.xml'
     testRunTitle:     'Test results for JavaScript'
 
 - task: PublishCodeCoverageResults@1
