@@ -12,10 +12,8 @@ describe( 'Test base routes', () => {
 
       expect( response.statusCode ).toEqual( 200  )
       expect( response.text       ).toEqual( "Welcome to OnSched" )
-
     })
 
   })
 
 })
-
