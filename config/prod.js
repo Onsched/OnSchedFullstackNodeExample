@@ -1,3 +1,4 @@
+// production key values
 
 module.exports = {
   // your OnSched client credentials
@@ -7,9 +8,7 @@ module.exports = {
   // OnSched OpenID Connect URL
   onschedIdentityURL: process.env.ONSCHED_IDENTITY_URL,
 
-  // the cookie key will be a random string used to encrypt
-  // session storage
-  cookieKey: process.env.ONSCHED_COOKIE_KEY
+  // OnSched API URL
+  onschedApiURL: process.env.ONSCHED_API_URL
 
 }
-
