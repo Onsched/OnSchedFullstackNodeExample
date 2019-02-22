@@ -1,12 +1,12 @@
 const axios   = require('axios')
 const request = require('supertest')
 
-const app = require('../../app')
+const app = require('../../../app')
 
 
 describe( 'Test auth routes', () => {
 
-  describe( 'GET /auth/initialize', () => {
+  describe( 'POST /auth/initialize', () => {
 
     beforeEach( () => {
       let data = {
@@ -23,7 +23,7 @@ describe( 'Test auth routes', () => {
     })
 
     test( 'should respond with an access_token', async () => {
-      const response = await request( app ).get( '/auth/initialize' )
+      const response = await request( app ).post( '/api/auth/initialize' )
 
       expect( response.statusCode ).toEqual( 200 )
       expect( response.body ).toMatchObject(
