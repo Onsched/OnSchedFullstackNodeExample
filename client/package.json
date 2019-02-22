@@ -2,31 +2,34 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --no-watch",
     "test:ci": "react-scripts test --ci --no-watch --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --coverageReporters=html",
     "eject": "react-scripts eject"
   },
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-redux": "^6.0.1",
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8"
+  },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest-junit": {
+    "suiteName": "client tests",
+    "output": "./TEST_RESULTS.xml",
+    "ancestorSeparator": " › ",
+    "usePathForSuiteName": true
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "jest-junit": {
-    "suiteName": "client tests",
-    "output": "./TEST_RESULTS.xml",
-    "ancestorSeparator": " › ",
-    "usePathForSuiteName": true
-  }
+  ]
 }
