@@ -3,7 +3,7 @@ const express = require('express')
 const axios   = require('axios')
 
 const { CONSUMER_API_URL,
-        getRequestHeaders } = require('../../utils/onschedApiUtils')
+        getRequestHeaders } = require('../../../utils/onschedApiUtils')
 
 // initialize router
 const router = express.Router()

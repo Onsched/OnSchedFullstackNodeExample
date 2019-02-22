@@ -3,7 +3,7 @@ const express = require('express')
 const appointmentRoutes  = require('./appointmentRoutes')
 const availabilityRoutes = require('./availabilityRoutes')
 const locationRoutes     = require('./locationRoutes')
-const errorResponses     = require('../../middlewares/onschedErrorResponses')
+const errorResponses     = require('../../../middlewares/onschedErrorResponses')
 
 
 // initialize the router

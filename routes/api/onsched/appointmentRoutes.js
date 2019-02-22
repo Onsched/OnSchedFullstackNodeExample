@@ -4,7 +4,7 @@ const axios      = require('axios')
 const bodyParser = require('body-parser')
 
 const { CONSUMER_API_URL,
-        getRequestHeaders } = require('../../utils/onschedApiUtils')
+        getRequestHeaders } = require('../../../utils/onschedApiUtils')
 
 
 // initialize router
