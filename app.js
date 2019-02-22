@@ -8,8 +8,8 @@ const rateLimit = require('express-rate-limit')
 const slowDown  = require('express-slow-down')
 
 const keys          = require('./config/keys')
-const authRoutes    = require('./routes/auth')
-const onschedRoutes = require('./routes/onsched')
+const authRoutes    = require('./routes/api/auth')
+const onschedRoutes = require('./routes/api/onsched')
 
 
 //----------------------
@@ -63,7 +63,7 @@ app.use( '/api/onsched', rateLimiter )
 //-------------------------
 // Route Handlers
 //-------------------------
-app.use( '/auth',        authRoutes )
+app.use( '/api/auth',    authRoutes )
 app.use( '/api/onsched', onschedRoutes )
 
 

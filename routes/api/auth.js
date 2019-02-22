@@ -2,8 +2,8 @@ const express     = require('express')
 const axios       = require('axios')
 const querystring = require('querystring')
 
-const keys           = require('../config/keys')
-const errorResponses = require('../middlewares/onschedErrorResponses')
+const keys           = require('../../config/keys')
+const errorResponses = require('../../middlewares/onschedErrorResponses')
 
 
 // initialize the router
@@ -13,7 +13,9 @@ const router = express.Router()
 //-------------------------
 // Route Handlers
 //-------------------------
-router.get( '/initialize', 
+
+// POST /api/auth/initialize
+router.post( '/initialize',
   (request, response, next) => {
     const params = {
       scope:         'OnSchedApi',
@@ -38,7 +40,7 @@ router.get( '/initialize',
 
   }
 
-) //-- end GET /auth/initialize
+) //-- end POST /api/auth/initialize
 
 
 //-------------------------------------------
