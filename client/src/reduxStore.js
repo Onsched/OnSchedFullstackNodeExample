@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools }          from 'redux-devtools-extension/logOnlyInProduction'
+import { createStore, applyMiddleware }      from 'redux'
+import { composeWithDevTools }               from 'redux-devtools-extension/logOnlyInProduction'
+import { middleware as reduxPackMiddleware } from 'redux-pack'
 
 import reducers from './reducers'
 
@@ -8,7 +9,9 @@ import reducers from './reducers'
 const store = createStore(
                 reducers,             // reducers
                 composeWithDevTools(  // enable redux-devtools ext in browser
-                  applyMiddleware( )  // add any redux middleware
+                  applyMiddleware(    // add any redux middleware
+                    reduxPackMiddleware
+                  )
                 )
               )
 
