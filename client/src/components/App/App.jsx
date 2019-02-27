@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 
 import { loadAccessToken } from '../../actions/authActions'
+import Landing             from '../Landing/Landing'
+import Loading             from '../Loading/Loading'
 
 import './App.css'
 
@@ -14,13 +16,7 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>
-            Welcome to OnSched!
-          </h2>
-
-          <div> { this.props.auth.token ? this.props.auth.token.access_token : '' } </div>
-        </header>
+        { this.props.auth.token ? <Landing /> : <Loading /> }
       </div>
     )
 
