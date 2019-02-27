@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Availability from '../Availability/Availability'
+
 import './Landing.css'
 
 
@@ -11,6 +13,8 @@ const Landing = () => {
           Welcome to OnSched!
         </h2>
       </header>
+
+      <Availability />
 
     </div>
   )

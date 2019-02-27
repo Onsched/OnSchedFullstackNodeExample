@@ -3,7 +3,10 @@ import { handle } from 'redux-pack'
 import { LOAD_ACCESS_TOKEN } from '../actions/authActions'
 
 
-export default function( state = {}, action ) {
+const INITIAL_STATE = { isLoading: true }
+
+
+export default function( state = INITIAL_STATE, action ) {
   const { type, payload } = action
 
   switch ( type ) {
