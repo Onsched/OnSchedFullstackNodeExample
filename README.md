@@ -20,6 +20,31 @@ Otherwise:
 $ git clone https://github.com/Onsched/OnSchedFullstackNodeExample.git
 ```
 
+##### Add a File for Storing Your Development Keys
+Add development keys and configuration to config/dev.js.  
+This file should never be committed because it will contain your,
+sandbox credentials.
+
+```js
+// DO NOT COMMIT THIS FILE
+// development key values and configuration
+
+module.exports = {
+  // your OnSched client credentials
+  onschedClientID:     "DemoUser",  // Replace these with your OnSched 
+  onschedClientSecret: "DemoUser",  // client credentials
+
+  // OnSched OpenID Connect URL
+  onschedIdentityURL: 'https://sandbox-identity.onsched.com',
+
+  // OnSched API URL
+  onschedApiURL: 'https://sandbox-api.onsched.com',
+
+  isDevelopment: true
+}
+
+```
+
 #### Run the Docker Compose Environment
 ```bash
 $ docker-compose up
@@ -97,11 +122,50 @@ $ cd OnSchedFullstackNodeExample
 $ yarn install
 ```
 
+##### Add a File for Storing Your Development Keys
+Add development keys and configuration to config/dev.js.  
+This file should never be committed because it will contain your,
+sandbox credentials.
+
+```js
+// DO NOT COMMIT THIS FILE
+// development key values and configuration
+
+module.exports = {
+  // your OnSched client credentials
+  onschedClientID:     "DemoUser",  // Replace these with your OnSched 
+  onschedClientSecret: "DemoUser",  // client credentials
+
+  // OnSched OpenID Connect URL
+  onschedIdentityURL: 'https://sandbox-identity.onsched.com',
+
+  // OnSched API URL
+  onschedApiURL: 'https://sandbox-api.onsched.com',
+
+  isDevelopment: true
+}
+
+```
+
 #### Start the Server
 The express server runs on port 5000
 
 ```bash
-$ yarn run start
+$ yarn run server
+```
+
+#### Start the Front End Client
+In a separate terminal window start the React Client on port 3000
+
+```bash
+$ yarn run client
+```
+
+If you want to run both the server and the client in the same 
+terminal window you can run both with 
+
+```bash 
+$ yarn run dev
 ```
 
 Open a browser to [http://localhost:5000/](http://localhost:5000)
