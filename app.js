@@ -67,16 +67,38 @@ app.use( '/api/auth',    authRoutes )
 app.use( '/api/onsched', onschedRoutes )
 
 
-// home routes
-app.get( '/', 
-  (request, response) => {
-    response.send( 'Welcome to OnSched' )
+// configure static asset routes for the client
+// only if NODE_ENV is 'production' or sandbox
+// these are only routes used for the deployed app
+if ( process.env.NODE_ENV === 'production' ||
+     process.env.NODE_ENV === 'sandbox' ) {
+  // Tell Express to serve up production assets
+  // like our main.js file or main.css file
+  app.use( express.static('client/build') )
+  // if we don't know the file that is being requested,
+  // look inside client/build/ to see if there
+  // is a match
 
-  }
-)
+
+  // for all other/unknown routes,
+  // Express will serve up the index.html file
+  // if it doesn't recognize the route
+  // Essentially hand it over to the client app
+  const path = require('path')
+
+  app.get( '*',
+           (request, response) => {
+             response.sendFile(
+               // get the current directory path,
+               // then build "<current_dir_path>/client/build/index.html"
+               path.resolve( __dirname, 'client', 'build', 'index.html' )
+             )
+           }
+  )
+
+}
 
 
 // export the app for testing and 
 // use in server.js
 module.exports = app
-

@@ -16,6 +16,7 @@ COPY . /app
 
 # Install app dependencies
 RUN yarn install
+RUN cd client && yarn install && yarn run build
 
 
 # Expose ports for accessing the app
