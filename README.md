@@ -20,8 +20,14 @@ Otherwise:
 $ git clone https://github.com/Onsched/OnSchedFullstackNodeExample.git
 ```
 
-##### Add a File for Storing Your Development Keys
-Add development keys and configuration to config/dev.js.  
+#### Move into the project directory
+```bash
+$ cd OnSchedFullstackNodeExample
+```
+
+#### Add a File for Storing Your Development Keys
+Create a file config/dev.js and copy the following code into it.  
+This will add development keys and configuration for the project.  
 This file should never be committed because it will contain your,
 sandbox credentials.
 
@@ -31,8 +37,8 @@ sandbox credentials.
 
 module.exports = {
   // your OnSched client credentials
-  onschedClientID:     "DemoUser",  // Replace these with your OnSched 
-  onschedClientSecret: "DemoUser",  // client credentials
+  onschedClientID:     "DemoUser", 
+  onschedClientSecret: "DemoUser",
 
   // OnSched OpenID Connect URL
   onschedIdentityURL: 'https://sandbox-identity.onsched.com',
@@ -45,12 +51,19 @@ module.exports = {
 
 ```
 
+#### Install the Node Modules for the Express App Using Yarn
+```bash
+$ yarn install
+$ cd client && yarn install
+$ cd ..
+```
+
 #### Run the Docker Compose Environment
 ```bash
 $ docker-compose up
 ```
 
-Open a browser to [http://localhost:5000/](http://localhost:5000)
+Open a browser to [http://localhost:3000/](http://localhost:3000)
 
 #### To Stop the Webserver
 Open a new terminal in the project folder and run
@@ -101,7 +114,7 @@ $ nvm install --lts
 Instructions and resources can be found at [https://yarnpkg.com](https://yarnpkg.com)
 
 ```bash
-$ brew install yarn --without-node
+$ brew install yarn --ignore-dependencies
 ```
 
 #### Clone This Repo
@@ -116,14 +129,14 @@ Otherwise:
 $ git clone https://github.com/Onsched/OnSchedFullstackNodeExample.git
 ```
 
-#### Install the Node Modules for the Express App Using Yarn
+#### Move into the project directory
 ```bash
 $ cd OnSchedFullstackNodeExample
-$ yarn install
 ```
 
-##### Add a File for Storing Your Development Keys
-Add development keys and configuration to config/dev.js.  
+#### Add a File for Storing Your Development Keys
+Create a file config/dev.js and copy the following code into it.  
+This will add development keys and configuration for the project. 
 This file should never be committed because it will contain your,
 sandbox credentials.
 
@@ -133,8 +146,8 @@ sandbox credentials.
 
 module.exports = {
   // your OnSched client credentials
-  onschedClientID:     "DemoUser",  // Replace these with your OnSched 
-  onschedClientSecret: "DemoUser",  // client credentials
+  onschedClientID:     "DemoUser", 
+  onschedClientSecret: "DemoUser",
 
   // OnSched OpenID Connect URL
   onschedIdentityURL: 'https://sandbox-identity.onsched.com',
@@ -145,6 +158,13 @@ module.exports = {
   isDevelopment: true
 }
 
+```
+
+#### Install the Node Modules for the Express App Using Yarn
+```bash
+$ yarn install
+$ cd client && yarn install
+$ cd ..
 ```
 
 #### Start the Server
@@ -168,5 +188,5 @@ terminal window you can run both with
 $ yarn run dev
 ```
 
-Open a browser to [http://localhost:5000/](http://localhost:5000)
+Open a browser to [http://localhost:3000/](http://localhost:3000)
 
