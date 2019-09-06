@@ -1,12 +1,13 @@
 import React from 'react'
 
+import Spinner from './Spinner.svg';
 import './Loading.css'
 
 
 const Loading = () => {
   return (
     <div className="Loading">
-      Loading...
+      <img src={Spinner} alt="Loading..."/>
     </div>
   )
 
