@@ -1,8 +1,6 @@
 // custom error handling for OnSched API
 const _ = require('lodash')
 
-const keys = require('../config/keys')
-
 
 module.exports = ( error, request, response, next ) => {
   if ( response.headersSent ) {
@@ -18,11 +16,13 @@ module.exports = ( error, request, response, next ) => {
   // create a JSON API style response object
   //
   // handle '401: Unauthorized error'
-  if ( errorResponse && status === 401 ) {
+  //        '404: Not Found'
+  if ( errorResponse && (status === 401 || status === 404 ) ) {
     responseObj.errors = [
       {
         status: status,
-        title:  statusText
+        title:  statusText,
+        detail: error.message,
       }
     ]
 
@@ -49,6 +49,7 @@ module.exports = ( error, request, response, next ) => {
         detail: data.message
       }
     ]
+
   }
   // handle additional field errors
   else if ( errorResponse && _.size( data ) > 0 )
@@ -83,13 +84,8 @@ module.exports = ( error, request, response, next ) => {
 
   }
 
-  if ( keys.isDevelopment ) {
-    console.log( error.stack )
-  }
-
   // send the error response to the caller
   response.status( status )
           .json( responseObj )
 
 }
-

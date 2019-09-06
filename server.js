@@ -1,6 +1,6 @@
-// server.js - this file is used to launch the
-// Express server and sets up the listener on
-// http://localhost:5000 for development
+// server.js - this file is used to run the server
+// it sets up the listener on port 5000
+
 const app = require('./app')
 
 
@@ -13,7 +13,6 @@ const PORT = process.env.PORT || 5000
 //-------------------------
 // set up server listening
 //-------------------------
-app.listen( PORT, 
-            () => console.log(`Listening on http://${HOST}:${PORT}`) 
+app.listen( PORT,
+            () => console.log(`Listening on http://${HOST}:${PORT}`)
 )
-

@@ -1,55 +1,78 @@
 const express     = require('express')
 const axios       = require('axios')
+const bodyParser  = require('body-parser')
 const querystring = require('querystring')
 
-const keys           = require('../../config/keys')
-const errorResponses = require('../../middlewares/onschedErrorResponses')
+const keys = require('../../config/keys')
 
 
 // initialize the router
 const router = express.Router()
 
 
-//-------------------------
-// Route Handlers
-//-------------------------
+// -----------------------------
+// route specific middleware
+// -----------------------------
+router.use( bodyParser.json() )
+
+
+// ------------------
+// route handlers
+//------------------
 
 // POST /api/auth/initialize
 router.post( '/initialize',
   (request, response, next) => {
     const params = {
-      scope:         'OnSchedApi',
-      grant_type:    'client_credentials',
       client_id:     keys.onschedClientID,
-      client_secret: keys.onschedClientSecret
+      client_secret: keys.onschedClientSecret,
+      scope:         keys.scope,
+      grant_type:    'client_credentials',
     }
 
     const tokenURL = `${keys.onschedIdentityURL}/connect/token`
 
     // querystring.stringify(params) will encode the param data
-    // in application/x-www-urlencoded format, which is required
+    // in application/x-www-form-urlencoded format, which is required
     // by the Identity Server
     axios.post( tokenURL, querystring.stringify(params) )
          .then( resp => {
-           // pass the access token back to the client app
-           response.send( resp.data ) || false
+           // set the access token on the session
+           request.session.tokenset = resp.data
+
+           // if preferred to have the access token in the
+           // client app, you can send it as a response here
+           response.json( { initialized: true } )
          })
-         // if not, pass the error to the 
-         // onschedErrorResponse middleware
          .catch( next )
 
   }
 
-) //-- end POST /api/auth/initialize
+)//-- end POST /api/auth/initialize
 
 
-//-------------------------------------------
-// route specific error handling middleware
-// error middleware must come after routes
-// and all other middleware
-//-------------------------------------------
-router.use( errorResponses )
+// useful for development
+if ( keys.isDevelopment ) {
+  // GET /api/auth/access_token
+  router.get( '/access_token',
+    (request, response) => {
+      response.send( request.session.tokenset || {} )
+    }
+  )
+
+}
 
 
-// export the router
+// DELETE /logout
+// deletes the session information
+router.delete( '/logout',
+  (request, response) => {
+    delete request.session.tokenset
+    delete request.session
+
+    response.json( { initialized: false } )
+  }
+)
+
+
 module.exports = router
