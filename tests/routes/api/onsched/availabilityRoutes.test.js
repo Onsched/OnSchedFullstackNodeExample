@@ -73,19 +73,18 @@ describe( 'Test availability routes', () => {
       const endDate   = '2019-02-23'
 
       const response =
-              await request( app ).get( `/api/onsched/availability/${serviceId}/${startDate}/${endDate}`,
-                                        { headers: { authorization: 'a_token' } } )
+              await request( app ).get( `/api/onsched/availability/${serviceId}/${startDate}/${endDate}` )
 
       expect( response.statusCode ).toEqual( 200 )
-      expect( response.body.data  ).toMatchObject(
-                                     {
-                                       url:          "/consumer/v1/availability/5/2019-02-22/2019-02-23",
-                                       object:       "availableTimes",
-                                       businessName: "Burlington Medical Center",
-                                       serviceId:    "5",
-                                       resourceId:   "33"
-                                     }
-                                   )
+      expect( response.body  ).toMatchObject(
+                                 {
+                                   url:          "/consumer/v1/availability/5/2019-02-22/2019-02-23",
+                                   object:       "availableTimes",
+                                   businessName: "Burlington Medical Center",
+                                   serviceId:    "5",
+                                   resourceId:   "33"
+                                 }
+                               )
     })
 
   })
