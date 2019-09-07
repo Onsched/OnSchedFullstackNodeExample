@@ -19,15 +19,16 @@ class Availability extends Component {
     const startDate = moment().add( 1, 'days' ).startOf( 'day' )
     const endDate   = startDate.clone().add( 7, 'days' )
 
-    // pass the access token
-    const token = this.props.auth.token
+    // pass the required parameters to the availability endpoint
+    const requiredParams = {
+      serviceId: '5',
+      startDate: startDate.format('YYYY-MM-DD'),
+      endDate:   endDate.format('YYYY-MM-DD')
+    }
+    // optional parameters which are added as queryParameters
+    const optionalParams = { resourceId: 33, tzOffset: 60 }
 
-    this.props.loadAvailability( token,
-                                 '5',
-                                 startDate.format('YYYY-MM-DD'),
-                                 endDate.format('YYYY-MM-DD'),
-                                 { resourceId: 33, tzOffset: 60 }
-                               )
+    this.props.loadAvailability( requiredParams, optionalParams )
   }
 
   render() {

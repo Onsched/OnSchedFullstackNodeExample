@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 
-export const LOAD_ACCESS_TOKEN = 'LOAD_ACCESS_TOKEN'
+export const INITIALIZE_ACCESS_TOKEN = 'INITIALIZE_ACCESS_TOKEN'
 
 
-export const loadAccessToken = () => {
+export const initializeAccessToken = () => {
   return {
-    type:    LOAD_ACCESS_TOKEN,
+    type:    INITIALIZE_ACCESS_TOKEN,
     promise: axios.post( '/api/auth/initialize' )
   }
 
