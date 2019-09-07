@@ -8,29 +8,13 @@ describe( 'Test auth routes', () => {
 
   describe( 'POST /auth/initialize', () => {
 
-    beforeEach( () => {
-      let data = {
-        "access_token": "long_encrypted_token_string",
-        "expires_in":   3600,
-        "token_type":   "Bearer"
-      }
-
-      // mock the axios post method inside /auth/initialize
-      axios.post = jest.fn()
-
-      axios.post
-           .mockReturnValue( Promise.resolve( { data: data } ) )
-    })
-
-    test( 'should respond with an access_token', async () => {
+    test( 'should respond with initialize', async () => {
       const response = await request( app ).post( '/api/auth/initialize' )
 
       expect( response.statusCode ).toEqual( 200 )
       expect( response.body ).toMatchObject(
                                {
-                                 access_token: 'long_encrypted_token_string',
-                                 expires_in:   3600,
-                                 token_type:   'Bearer'
+                                 initialized: true
                                }
                              )
     })

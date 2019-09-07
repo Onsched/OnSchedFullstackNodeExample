@@ -51,32 +51,31 @@ describe( 'Test appointment routes', () => {
 
       const response =
               await request( app ).post( `/api/onsched/appointments`,
-                                         appointmentData,
-                                         { headers: { authorization: 'a_token' } } )
+                                         appointmentData )
 
       expect( response.statusCode ).toEqual( 200 )
-      expect( response.body.data  ).toMatchObject(
-                                     {
-                                       "object": "appointment",
-                                       "id": "296151",
-                                       "locationId": "e4d61bd8-cdf3-4fc9-887e-2320dce062e0",
-                                       "businessName": "Burlington Medical Center",
-                                       "calendarId": "2",
-                                       "serviceId": "5",
-                                       "serviceName": "Assessment",
-                                       "resourceId": "33",
-                                       "resourceName": "Janice Joplin",
-                                       "customerId": "",
-                                       "rescheduledId": "",
-                                       "createDate": "2019-02-22T00:09:19Z",
-                                       "startDateTime": "2019-02-22T11:30:00-05:00",
-                                       "endDateTime": "2019-02-22T12:00:00-05:00",
-                                       "timezone": -300,
-                                       "status": "IN",
-                                       "confirmationNumber": "Z151692",
-                                       "confirmed": false,
-                                     }
-                                   )
+      expect( response.body  ).toMatchObject(
+                                 {
+                                   "object": "appointment",
+                                   "id": "296151",
+                                   "locationId": "e4d61bd8-cdf3-4fc9-887e-2320dce062e0",
+                                   "businessName": "Burlington Medical Center",
+                                   "calendarId": "2",
+                                   "serviceId": "5",
+                                   "serviceName": "Assessment",
+                                   "resourceId": "33",
+                                   "resourceName": "Janice Joplin",
+                                   "customerId": "",
+                                   "rescheduledId": "",
+                                   "createDate": "2019-02-22T00:09:19Z",
+                                   "startDateTime": "2019-02-22T11:30:00-05:00",
+                                   "endDateTime": "2019-02-22T12:00:00-05:00",
+                                   "timezone": -300,
+                                   "status": "IN",
+                                   "confirmationNumber": "Z151692",
+                                   "confirmed": false,
+                                 }
+                               )
     })
 
   })
@@ -135,48 +134,47 @@ describe( 'Test appointment routes', () => {
 
       const response =
               await request( app ).patch( `/api/onsched/appointments/${reservationId}/book`,
-                                          appointmentData,
-                                          { headers: { authorization: 'a_token' } } )
+                                          appointmentData )
 
       expect( response.statusCode ).toEqual( 200 )
-      expect( response.body.data  ).toMatchObject(
-                                     {
-                                       "object": "appointment",
-                                       "id": "296151",
-                                       "locationId": "e4d61bd8-cdf3-4fc9-887e-2320dce062e0",
-                                       "businessName": "Burlington Medical Center",
-                                       "calendarId": "2",
-                                       "serviceId": "5",
-                                       "serviceName": "Assessment",
-                                       "resourceId": "33",
-                                       "resourceName": "Janice Joplin",
-                                       "customerId": "54549",
-                                       "rescheduledId": "",
-                                       "createDate": "2019-02-22T00:09:19Z",
-                                       "startDateTime": "2019-02-22T11:30:00-05:00",
-                                       "endDateTime": "2019-02-22T12:00:00-05:00",
-                                       "timezone": -300,
-                                       "status": "BK",
-                                       "confirmationNumber": "Z151692",
-                                       "confirmed": false,
-                                       "email": "71.34.152.65",
-                                       "lastModifiedOn": "2019-02-22T00:12:08Z",
-                                       "lastModifiedBy": "71.34.152.65",
-                                       "auditTrail": [
-                                         {
-                                           "id": "546723",
-                                           "appointmentId": "296151",
-                                           "modifiedOn": "2019-02-22T00:12:09.3969432+00:00",
-                                           "modifiedBy": "71.34.152.65",
-                                           "modificationType": "status",
-                                           "statusBefore": "IN",
-                                           "statusAfter": "BK",
-                                           "notesBefore": "",
-                                           "notesAfter": ""
-                                         }
-                                       ]
-                                     }
-                                   )
+      expect( response.body  ).toMatchObject(
+                                {
+                                  "object": "appointment",
+                                  "id": "296151",
+                                  "locationId": "e4d61bd8-cdf3-4fc9-887e-2320dce062e0",
+                                  "businessName": "Burlington Medical Center",
+                                  "calendarId": "2",
+                                  "serviceId": "5",
+                                  "serviceName": "Assessment",
+                                  "resourceId": "33",
+                                  "resourceName": "Janice Joplin",
+                                  "customerId": "54549",
+                                  "rescheduledId": "",
+                                  "createDate": "2019-02-22T00:09:19Z",
+                                  "startDateTime": "2019-02-22T11:30:00-05:00",
+                                  "endDateTime": "2019-02-22T12:00:00-05:00",
+                                  "timezone": -300,
+                                  "status": "BK",
+                                  "confirmationNumber": "Z151692",
+                                  "confirmed": false,
+                                  "email": "71.34.152.65",
+                                  "lastModifiedOn": "2019-02-22T00:12:08Z",
+                                  "lastModifiedBy": "71.34.152.65",
+                                  "auditTrail": [
+                                    {
+                                      "id": "546723",
+                                      "appointmentId": "296151",
+                                      "modifiedOn": "2019-02-22T00:12:09.3969432+00:00",
+                                      "modifiedBy": "71.34.152.65",
+                                      "modificationType": "status",
+                                      "statusBefore": "IN",
+                                      "statusAfter": "BK",
+                                      "notesBefore": "",
+                                      "notesAfter": ""
+                                    }
+                                  ]
+                                }
+                              )
     })
 
   })

@@ -111,6 +111,10 @@ if ( process.env.NODE_ENV === 'production' ||
   
 }
 
+app.get('/', (request, response) => {
+  response.send('Welcome to OnSched')
+})
+
 
 
 // export the app for testing and
