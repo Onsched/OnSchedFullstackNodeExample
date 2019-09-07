@@ -1,8 +1,7 @@
 const axios   = require('axios')
 const request = require('supertest')
 
-const app = require( '../../../../app')
-
+const app = require('../../../../app')
 
 describe( 'Test location routes', () => {
 
@@ -27,12 +26,10 @@ describe( 'Test location routes', () => {
       axios.get
            .mockReturnValue( Promise.resolve( { data: mockResponse } ) )
 
-
-      const response = await request( app ).get( `/api/onsched/locations`,
-                                                 { headers: { authorization: 'a_token' } } )
+      const response = await request( app ).get( `/api/onsched/locations` )
 
       expect( response.statusCode ).toEqual( 200 )
-      expect( response.body.data  ).toMatchObject(
+      expect( response.body ).toMatchObject(
         {
           object:  "business",
           url:     "/consumer/v1/locations",
@@ -112,20 +109,19 @@ describe( 'Test location routes', () => {
       const locationId = 'e4d61bd8-cdf3-4fc9-887e-2320dce062e0'
 
       const response =
-              await request( app ).get( `/api/onsched/locations/${locationId}`,
-                                        { headers: { authorization: 'a_token' } } )
+              await request( app ).get( `/api/onsched/locations/${locationId}` )
 
       expect( response.statusCode ).toEqual( 200 )
-      expect( response.body.data  ).toMatchObject(
-                                     {
-                                       object:      "location",
-                                       id:          "e4d61bd8-cdf3-4fc9-887e-2320dce062e0",
-                                       friendlyId:  "burlingtonmedical",
-                                       companyId:   "5e737c4b-379f-481d-b075-1c7cab1ac822",
-                                       companyName: "Burlington Medical Center",
-                                       name:        "Burlington Medical Center",
-                                     }
-                                   )
+      expect( response.body ).toMatchObject(
+                               {
+                                 object:      "location",
+                                 id:          "e4d61bd8-cdf3-4fc9-887e-2320dce062e0",
+                                 friendlyId:  "burlingtonmedical",
+                                 companyId:   "5e737c4b-379f-481d-b075-1c7cab1ac822",
+                                 companyName: "Burlington Medical Center",
+                                 name:        "Burlington Medical Center",
+                               }
+                             )
     })
 
   })
