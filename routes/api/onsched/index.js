@@ -19,9 +19,9 @@ const router = express.Router()
 router.use( bodyParser.json() )
 
 
-//------------------
+//----------------------
 // route handlers
-//------------------
+//----------------------
 
 // Generic route handler for /api/onsched/... routes
 // this route handler handles GET, POST, PUT, PATCH, DELETE
@@ -67,4 +67,5 @@ router.use( logErrors )
 router.use( errorResponses )
 
 
+// export the router
 module.exports = router

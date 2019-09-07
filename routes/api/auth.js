@@ -19,7 +19,6 @@ router.use( bodyParser.json() )
 // ------------------
 // route handlers
 //------------------
-
 // POST /api/auth/initialize
 router.post( '/initialize',
   (request, response, next) => {
@@ -75,4 +74,5 @@ router.delete( '/logout',
 )
 
 
+// export the router
 module.exports = router

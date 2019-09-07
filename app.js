@@ -13,6 +13,7 @@ const authRoutes     = require('./routes/api/auth')
 const onschedRoutes  = require('./routes/api/onsched')
 
 
+
 //----------------------
 // Configuration
 //----------------------
@@ -41,7 +42,7 @@ if ( keys.isDevelopment ) {
 // and configure options
 app.use(
   cookieSession(
-    {
+    { 
       maxAge: 60 * 60 * 1000,
       keys:   [ keys.cookieKey ]
     }
@@ -52,7 +53,7 @@ app.use(
 const speedLimiter = slowDown(
   {
     windowMs:   30 * 60 * 1000, // 30 minutes
-    delayAfter: 50,             // allow 20 requests to go at full-speed, then...
+    delayAfter: 50,             // allow 50 requests to go at full-speed, then...
     delayMs:    500             // 6th request has a 500ms delay,
                                 // 7th has a 1000ms delay, 8th gets 1500ms, etc.
   }
@@ -67,6 +68,7 @@ const rateLimiter = rateLimit(
   }
 )
 
+// add rate/speed limiting to the API endpoints
 app.use( '/api', speedLimiter )
 app.use( '/api', rateLimiter )
 
@@ -88,7 +90,7 @@ if ( process.env.NODE_ENV === 'production' ||
   // like our main.js file or main.css file
   app.use( express.static('client/build') )
   // if we don't know the file that is being requested,
-  // look inside build to see if there
+  // look inside client/build to see if there
   // is a match.  the path is relative to the app root
 
   // for all other/unknown routes,
@@ -105,8 +107,8 @@ if ( process.env.NODE_ENV === 'production' ||
         path.resolve( __dirname, 'client', 'build', 'index.html' )
       )
     }
-
   )
+  
 }
 
 

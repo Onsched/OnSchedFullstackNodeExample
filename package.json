@@ -14,6 +14,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "yarn --cwd client run start",
+    "dev": "yarn run server & yarn run client",
     "test": "yarn run test:server && yarn run test:client",
     "test:server": "jest",
     "test:client": "yarn --cwd client run test --no-watch",

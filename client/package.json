@@ -10,25 +10,14 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "moment": "^2.24.0",
     "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.8",
-    "react-datepicker": "^2.4.0",
     "react-dom": "^16.8.6",
-    "react-ga": "^2.5.7",
-    "react-moment": "^0.9.2",
-    "react-number-format": "^4.0.8",
-    "react-places-autocomplete": "^7.2.1",
     "react-redux": "^6.0.1",
-    "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-form": "^8.2.0",
-    "redux-pack": "^0.1.5",
-    "redux-thunk": "^2.3.0"
+    "redux-pack": "^0.1.5"
   },
   "devDependencies": {
     "http-proxy-middleware": "^0.19.1"
