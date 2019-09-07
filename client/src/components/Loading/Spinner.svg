@@ -1,0 +1,41 @@
+<svg width="80px" height="80px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M24,0 L76,0 C89.254834,-2.4348735e-15 100,10.745166 100,24 L100,76 C100,89.254834 89.254834,100 76,100 L24,100 C10.745166,100 1.623249e-15,89.254834 0,76 L0,24 L0,24 C-1.623249e-15,10.745166 10.745166,2.4348735e-15 24,0 L24,0 Z M50.1694561,81.8793122 C50.8274081,81.8793122 51.4815269,88.3700171 52.1314255,88.3375803 C71.9270802,87.34957 87.8072415,71.4939037 88.8340109,51.7084799 C88.8690591,51.0331152 82.379684,50.3531716 82.379684,49.6690843 C82.379684,49.0243288 88.8710406,48.3832543 88.8398845,47.746225 C87.8699536,27.9146392 71.9788842,12.0035044 52.155661,11.0018053 C51.4977896,10.968562 50.8355874,17.4588563 50.1694561,17.4588563 C49.5146851,17.4588563 48.8637103,10.9679932 48.2169133,11.0001189 C28.3854018,11.9851284 12.4813458,27.8915723 11.500117,47.7240787 C11.4682389,48.3683957 17.9592281,49.0168566 17.9592281,49.6690843 C17.9592281,50.3447506 11.4694189,51.0163746 11.5036148,51.683537 C12.5184993,71.4839563 28.4089387,87.3545732 48.2176305,88.3380853 C48.8641916,88.3701874 49.5149271,81.8793122 50.1694561,81.8793122 Z" id="path-1"></path>
+        <filter x="-2.0%" y="-2.0%" width="104.0%" height="104.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="2" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.348278986 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Spinner" fill-rule="nonzero">
+            <g id="minute" transform="translate(46.000000, 19.000000)" fill="#2196F3">
+                <path d="M4.29850746,0 C4.52719139,0 4.87796393,2.65221671 5.74931211,7.80405625 C6.3302109,11.2386159 6.80183323,18.7865176 7.1641791,30.4477612 L1.43283582,30.4477612 C1.87421453,18.0895977 2.33707894,10.5421324 2.82142904,7.80536526 C3.73368641,2.65075501 4.06982354,1.487803e-16 4.29850746,0 Z" id="Triangle1"></path>
+                <circle id="Oval-1" cx="4.47761194" cy="30.6268657" r="4.47761194"></circle>
+            </g>
+            <g id="hour" transform="translate(46.000000, 29.000000)" fill="#2196F3">
+                <path d="M4.29850746,-1.13686838e-13 C4.52719139,-1.13686838e-13 4.87796393,1.78114553 5.74931211,5.24095934 C6.3302109,7.54750188 6.80183323,12.6164358 7.1641791,20.4477612 L1.43283582,20.4477612 C1.87421453,12.1484063 2.33707894,7.0797654 2.82142904,5.24183844 C3.73368641,1.78016391 4.06982354,-1.13586922e-13 4.29850746,-1.13686838e-13 Z" id="Triangle1"></path>
+                <circle id="Oval-1" cx="4.47761194" cy="20.6268657" r="4.47761194"></circle>
+            </g>
+            <g id="Combined-Shape">
+                <use fill="#2196F3" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+    <style>
+        #hour path {
+            animation: spin 8s linear infinite;
+            transform-origin: 4.5px 21.3px;
+        }
+        #minute path {
+            animation: spin 2s linear infinite;
+            transform-origin: 4.5px 31px;
+        }
+        @keyframes spin {
+            0% {}
+            100% {transform: rotate(360deg)}
+        }
+    </style>
+</svg>

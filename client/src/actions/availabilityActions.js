@@ -5,8 +5,8 @@ import querystring from 'querystring'
 export const LOAD_AVAILABILITY = 'LOAD_AVAILABILITY'
 
 
-// fetchAvailability
-// required params:
+// loadAvailability
+// requiredParams: is an object containing the following fields
 //    name         format       description
 //    ----------   ----------   -------------
 //    serviceId:   string       the serviceId of the which is being searched
@@ -32,17 +32,12 @@ export const LOAD_AVAILABILITY = 'LOAD_AVAILABILITY'
 //                                  days specified
 //    firstDayAvailable:  boolean   return available times for
 //
-export const loadAvailability = ( token,
-                                  serviceId,
-                                  startDate,
-                                  endDate,
+export const loadAvailability = ( requiredParams,
                                   queryParams = {} ) => {
 
-  const config = {
-                   headers: {
-                     authorization: `${token.token_type} ${token.access_token}`
-                   }
-                 }
+  const { serviceId,
+          startDate,
+          endDate } = requiredParams
 
   const queryString = querystring.stringify( queryParams )
 
@@ -52,7 +47,7 @@ export const loadAvailability = ( token,
 
   return {
     type:    LOAD_AVAILABILITY,
-    promise: axios.get( availabilityRoute, config )
+    promise: axios.get( availabilityRoute )
   }
 
 }

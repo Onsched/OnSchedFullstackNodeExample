@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "moment": "^2.24.0",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
-    "react-scripts": "2.1.5",
+    "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-pack": "^0.1.5"
@@ -31,10 +31,16 @@
     "ancestorSeparator": " › ",
     "usePathForSuiteName": true
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
