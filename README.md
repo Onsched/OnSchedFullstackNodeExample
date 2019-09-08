@@ -36,16 +36,15 @@ sandbox credentials.
 // development key values and configuration
 
 module.exports = {
-  // your OnSched client credentials
-  onschedClientID:     "DemoUser", 
-  onschedClientSecret: "DemoUser",
-
-  // OnSched OpenID Connect URL
-  onschedIdentityURL: 'https://sandbox-identity.onsched.com',
-
-  // OnSched API URL
-  onschedApiURL: 'https://sandbox-api.onsched.com',
-
+  onschedClientID:     'DemoUser',
+  onschedClientSecret: 'DemoUser',
+  scope:               'OnSchedApi',
+                  
+  onschedIdentityURL:  'https://sandbox-identity.onsched.com',
+  onschedApiURL:       'https://sandbox-api.onsched.com',
+                  
+  cookieKey: '<insert_random_string_here/>',
+                  
   isDevelopment: true
 }
 
@@ -65,8 +64,21 @@ $ docker-compose up
 
 Open a browser to [http://localhost:3000/](http://localhost:3000)
 
-#### To Stop the Webserver
-Open a new terminal in the project folder and run
+**NOTE:* The docker-compose image used during development will be built 
+in such a way that it will link to your local files, so any changes 
+you make while coding should be immediately reflected in the running 
+web server.  Of course, the image will need to be rebuilt if you make
+changes to your node packages, the Dockerfile or the docker-compose.yml
+file.  You can rebuild by stopping the container and issuing 
+the --build option to the docker-compose command.
+
+```bash
+$ docker-compose up --build
+```
+
+#### To Stop the Web Server/Container
+Type Ctrl-C in the terminal running the process or open a second 
+terminal session in the project folder and run
 
 ```bash
 $ docker-compose down
@@ -145,16 +157,15 @@ sandbox credentials.
 // development key values and configuration
 
 module.exports = {
-  // your OnSched client credentials
-  onschedClientID:     "DemoUser", 
-  onschedClientSecret: "DemoUser",
-
-  // OnSched OpenID Connect URL
-  onschedIdentityURL: 'https://sandbox-identity.onsched.com',
-
-  // OnSched API URL
-  onschedApiURL: 'https://sandbox-api.onsched.com',
-
+  onschedClientID:     'DemoUser',
+  onschedClientSecret: 'DemoUser',
+  scope:               'OnSchedApi',
+                  
+  onschedIdentityURL:  'https://sandbox-identity.onsched.com',
+  onschedApiURL:       'https://sandbox-api.onsched.com',
+                  
+  cookieKey: '<insert_random_string_here/>',
+                  
   isDevelopment: true
 }
 
@@ -190,3 +201,10 @@ $ yarn run dev
 
 Open a browser to [http://localhost:3000/](http://localhost:3000)
 
+#### Troubleshooting problems with Node or Yarn versions
+The Node and Yarn versions set in the main package.json file are 
+defined to fix problems during deployment to Azure.  If the 
+versions do not match what you have locally, simply remove the
+"engines" section from the package.json file.  Be aware that this
+could cause problems when deploying, if your service defaults to
+older versions of Node, but it should work for local development.

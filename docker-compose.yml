@@ -9,8 +9,11 @@ services:
     # command and volumes options 
     command: yarn run dev
     volumes:
-      - .:/app
+      - .:/usr/app
     environment:
+      # environment variables here are only
+      # available during runtime execution
+      # not during the image build process
       # PORT: 5000
       NODE_ENV: development
     ports:
