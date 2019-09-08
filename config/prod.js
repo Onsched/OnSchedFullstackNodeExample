@@ -10,7 +10,7 @@ module.exports = {
   onschedIdentityURL:  process.env.ONSCHED_IDENTITY_URL,
 
   // OnSched API URL
-  onschedApiURL:       process.env.ONSCHED_API_URL
+  onschedApiURL:       process.env.ONSCHED_API_URL,
 
   // a random sequence of characters for setting the
   // encrypted session cookie
