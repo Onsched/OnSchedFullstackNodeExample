@@ -2,7 +2,14 @@
 version: '3'
 services:
   web:
-    build: .
+    # set build context and build-time
+    # arguments here
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: development
+
     image: onsched_fs_node_ex:latest
     # make sure development code changes are 
     # picked up by the container with the 
@@ -10,12 +17,12 @@ services:
     command: yarn run dev
     volumes:
       - .:/usr/app
-    environment:
-      # environment variables here are only
-      # available during runtime execution
-      # not during the image build process
-      # PORT: 5000
-      NODE_ENV: development
+      # use node_modules that are installed during
+      # the container build process.  if these are
+      # changed you will need to rebuild the image
+      - /usr/app/node_modules
+      - /usr/app/client/node_modules
+
     ports:
       - "5000:5000"
       - "3000:3000"

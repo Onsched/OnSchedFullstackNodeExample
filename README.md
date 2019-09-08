@@ -202,9 +202,19 @@ $ yarn run dev
 Open a browser to [http://localhost:3000/](http://localhost:3000)
 
 #### Troubleshooting problems with Node or Yarn versions
-The Node and Yarn versions set in the main package.json file are 
-defined to fix problems during deployment to Azure.  If the 
-versions do not match what you have locally, simply remove the
-"engines" section from the package.json file.  Be aware that this
-could cause problems when deploying, if your service defaults to
-older versions of Node, but it should work for local development.
+If you run into problems with the Node and Yarn versions during a 
+deployment build, (ie your build pipeline times out or fails
+to complete) you may need to add an "engines" section to the 
+package.json file.
+  
+```json
+"engines": {
+  "node": ">=10.16.0",
+  "yarn": ">=1.17.3"
+},
+```
+
+Check the specific versions being used by your pipeline and container.
+This was a problem in Azure at one point, although currently it 
+seems to have been resolved. Be aware, that if you implement this, 
+you may need to remove the section for local development.
