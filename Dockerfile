@@ -1,10 +1,10 @@
 # Create a container image for the app
 FROM node:dubnium-alpine
 
-# ENV variables are available during runtime
-# and build time processing
-#ENV PORT 5000
-#ENV NODE_ENV production
+# Allow NODE_ENV to be set to different values
+# depending on the image build/deployment environment
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
 # Create app directory
 WORKDIR /usr/app
