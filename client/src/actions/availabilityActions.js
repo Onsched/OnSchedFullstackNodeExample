@@ -42,7 +42,7 @@ export const loadAvailability = ( requiredParams,
   const queryString = querystring.stringify( queryParams )
 
   const availabilityRoute = `/api/onsched/availability/${serviceId}` +
-                            `/${startDate}/${endDate} ` +
+                            `/${startDate}/${endDate}/` +
                             `?${queryString}`
 
   return {
