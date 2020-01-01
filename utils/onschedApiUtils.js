@@ -14,7 +14,6 @@ module.exports = {
     const forwardedFor = requestHeaders['x-forwarded-for'] || remoteAddress
 
     // set the following specifically
-    headers.host               = null
     headers.authorization      = `Bearer ${accessToken}`
     headers.accept             = 'application/json'
     headers['x-forwarded-for'] = forwardedFor
