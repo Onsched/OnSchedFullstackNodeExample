@@ -1,6 +1,6 @@
 {
   "name": "OnSchedFullstackNodeExample",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Example fullstack Node application using the OnSched API without user Authentication (using an AccessToken)",
   "main": "server.js",
   "author": "Michael Reeves",
@@ -21,7 +21,7 @@
     "build:client": "yarn --cwd client run build"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.17.1",
@@ -31,10 +31,10 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
-    "jest": "24.8.0",
-    "jest-junit": "^8.0.0",
+    "jest": "24.9.0",
+    "jest-junit": "^10.0.0",
     "moment": "^2.24.0",
-    "nodemon": "^1.19.2",
+    "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
   },
   "jest-junit": {
