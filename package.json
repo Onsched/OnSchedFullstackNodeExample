@@ -1,6 +1,6 @@
 {
   "name": "OnSchedFullstackNodeExample",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Example fullstack Node application using the OnSched API without user Authentication (using an AccessToken)",
   "main": "server.js",
   "author": "Michael Reeves",
