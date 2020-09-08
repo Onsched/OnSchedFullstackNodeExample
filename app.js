@@ -7,6 +7,7 @@ const morgan        = require('morgan')
 const cookieSession = require('cookie-session')
 const rateLimit     = require('express-rate-limit')
 const slowDown      = require('express-slow-down')
+const helmet        = require('helmet')
 
 const keys           = require('./config/keys')
 const authRoutes     = require('./routes/api/auth')
@@ -38,13 +39,25 @@ if ( keys.isDevelopment ) {
   app.use( morgan('dev') )
 }
 
+// security suite to update response headers
+app.use(helmet())
+app.use(helmet.contentSecurityPolicy({
+                directives: {
+                  defaultSrc: ["'self'"]
+                }
+              })
+)
+
 // tell express to use cookie-session
 // and configure options
 app.use(
   cookieSession(
     { 
-      maxAge: 60 * 60 * 1000,
-      keys:   [ keys.cookieKey ]
+      // Cookie Options
+      name:     'os_session',
+      maxAge:   24 * 60 * 60 * 1000,  // 24 hours
+      keys:     [ keys.cookieKey ],
+      httpOnly: true
     }
   )
 )
