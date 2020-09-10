@@ -48,6 +48,8 @@ app.use(helmet.contentSecurityPolicy({
               })
 )
 
+// app.set('trust proxy', 1) // trust first proxy
+
 // tell express to use cookie-session
 // and configure options
 app.use(
@@ -57,7 +59,8 @@ app.use(
       name:     'os_session',
       maxAge:   24 * 60 * 60 * 1000,  // 24 hours
       keys:     [ keys.cookieKey ],
-      httpOnly: true
+      httpOnly: true,
+      secure:   true
     }
   )
 )
@@ -90,7 +93,7 @@ app.use( '/api', rateLimiter )
 //-------------------------
 // Route Handlers
 //-------------------------
-app.use( '/api/auth',    authRoutes )
+app.use( '/auth',        authRoutes )
 app.use( '/api/onsched', onschedRoutes )
 
 // configure static asset routes for the clients apps
