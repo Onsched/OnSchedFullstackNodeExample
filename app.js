@@ -38,13 +38,21 @@ if ( keys.isDevelopment ) {
   app.use( morgan('dev') )
 }
 
+
+app.set('trust proxy', true)
+
 // tell express to use cookie-session
 // and configure options
 app.use(
   cookieSession(
     { 
-      maxAge: 60 * 60 * 1000,
-      keys:   [ keys.cookieKey ]
+      name:     'os_session',
+      keys:     [ keys.cookieKey ],
+      // Cookie Options
+      maxAge:   24 * 60 * 60 * 1000,  // 24 hours
+      httpOnly: true,
+      sameSite: 'none',
+      secure:   true
     }
   )
 )
