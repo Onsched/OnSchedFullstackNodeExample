@@ -39,7 +39,7 @@ if ( keys.isDevelopment ) {
 }
 
 
-app.set('trust proxy', true)
+app.set('trust proxy', 2)
 
 // tell express to use cookie-session
 // and configure options
