@@ -4,9 +4,9 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  imageName:        'onsched_fullstack_node_ex'
-  imageSandbox:     '$(imageName):sandbox'
-  imageSboxRelease: '$(imageName):sandbox$(Build.BuildId)'
+- group: deployment-params
+- name:  imageSboxRelease
+  value: $(imageName):sandbox$(Build.BuildId)
   # define two more variables dockerId and dockerPassword in the build pipeline in UI
 
 steps:
